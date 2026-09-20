@@ -1,0 +1,39 @@
+.phase-spatial { width: min(1120px, 100%); margin: 0 auto; color: #1A1D1F; }
+.spatial-intro { display: flex; align-items: end; justify-content: space-between; gap: 36px; margin-bottom: 30px; }
+.spatial-intro h2 { max-width: 720px; margin: 7px 0 13px; font-size: clamp(2rem, 4vw, 3.8rem); line-height: 1.02; letter-spacing: -.055em; font-weight: 600; }
+.spatial-lede { color: #525A62; max-width: 540px; margin: 0; font-size: 1rem; }
+.spatial-affiliations { display: grid; gap: 9px; color: #525A62; font-size: .78rem; white-space: nowrap; }
+.spatial-affiliations span { display: flex; align-items: center; gap: 8px; }
+.spatial-sandbox { padding: clamp(18px, 3vw, 30px); overflow: hidden; }
+.spatial-card-head { display: flex; align-items: start; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
+.spatial-card-head h3 { margin: 6px 0 0; font-size: clamp(1.35rem, 2.4vw, 2rem); letter-spacing: -.035em; }
+.spatial-live { display: inline-flex; align-items: center; gap: 6px; color: #467b6f; font-size: .68rem; letter-spacing: .09em; font-weight: 700; }
+.spatial-map-wrap { position: relative; border-radius: 19px; background: #dce9e7; overflow: hidden; }
+.spatial-network { display: block; width: 100%; height: auto; min-height: 280px; }
+.spatial-slider-label { position: absolute; top: 15px; left: 17px; border-radius: 999px; background: rgba(255,255,255,.76); backdrop-filter: blur(12px); padding: 6px 10px; color: #525A62; font-size: .72rem; }
+.spatial-slider-label strong { color: #1A1D1F; margin-left: 5px; }
+.spatial-slider { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
+.spatial-slider:focus-visible { opacity: 1; accent-color: #8FBDAD; }
+.spatial-map-note { position: absolute; right: 14px; bottom: 12px; color: #fff; text-shadow: 0 1px 5px rgba(0,0,0,.32); font-size: .68rem; letter-spacing: .03em; }
+.spatial-controls { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 17px; }
+.spatial-modes { display: flex; flex-wrap: wrap; gap: 7px; }
+.spatial-modes button, .spatial-params-toggle { border: 1px solid rgba(26,29,31,.1); border-radius: 999px; background: rgba(255,255,255,.52); color: #525A62; padding: 8px 12px; display: inline-flex; align-items: center; gap: 6px; font: inherit; font-size: .75rem; cursor: pointer; transition: .2s ease; }
+.spatial-modes button:hover, .spatial-modes button:focus-visible, .spatial-params-toggle:hover, .spatial-params-toggle:focus-visible { border-color: #8FBDAD; outline: none; }
+.spatial-modes button.is-active { background: #8FBDAD; border-color: #8FBDAD; color: #1A1D1F; }
+.spatial-mode-hint { display: flex; align-items: center; gap: 7px; color: #8C96A0; font-size: .75rem; margin: 0; }
+.spatial-params { border-top: 1px solid rgba(26,29,31,.08); margin-top: 21px; padding-top: 15px; }
+.spatial-params-toggle { border: 0; padding: 2px 0; background: none; color: #525A62; }
+.spatial-params-toggle svg:last-child { transform: rotate(90deg); color: #8C96A0; }
+.spatial-param-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 13px; }
+.spatial-param-grid div { display: grid; gap: 3px; padding: 11px 13px; border-radius: 13px; background: rgba(143,189,173,.1); }
+.spatial-param-grid strong { font-size: .8rem; }
+.spatial-param-grid span { color: #8C96A0; font-size: .72rem; }
+.spatial-projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 17px; }
+.spatial-project { padding: 23px 25px; }
+.spatial-project-index { color: #6e9d90; font-size: .7rem; letter-spacing: .12em; }
+.spatial-project h3 { margin: 8px 0 7px; font-size: 1.3rem; letter-spacing: -.025em; }
+.spatial-project p { margin: 0; max-width: 45ch; color: #525A62; line-height: 1.65; font-size: .88rem; }
+.spatial-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 17px; }
+.spatial-tags span { border-radius: 999px; background: rgba(143,189,173,.15); color: #467b6f; padding: 5px 9px; font-size: .68rem; }
+@media (max-width: 700px) { .spatial-intro { display: block; } .spatial-affiliations { margin-top: 20px; } .spatial-network { min-height: 220px; } .spatial-controls { align-items: start; flex-direction: column; } .spatial-mode-hint { margin-left: 2px; } .spatial-param-grid { grid-template-columns: 1fr; } .spatial-projects { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .spatial-modes button { transition: none; } }
