@@ -31,3 +31,13 @@ bash /Users/cxc/Projects/personal/unreached-manifold-sticker-garden/sticker-stud
 ```
 
 `manifest.json` 中的 `crop`、`seed` 和 `place` 分别控制每张贴纸的来源范围、抠图起点及场景中的位置。初始轮廓和完成贴纸共用 `place`，因此位置必然一致。贴纸源图的灰底是 JPEG，自动抠图后仍需检查白边、树枝空隙、三段路的接缝和桥与池塘的组合效果。
+
+## 自由摆放网页
+
+抠图完成后，运行下面一行命令并保持终端窗口打开：
+
+```bash
+bash /Users/cxc/Projects/personal/unreached-manifold-sticker-garden/sticker-study/serve-editor.sh
+```
+
+浏览器打开 `http://127.0.0.1:8765/unreached-manifold-sticker-garden/sticker-study/editor.html`。编辑页从空画布开始，可拖放或点击添加贴纸，选中后缩放、旋转、调整层级、复制或移除。位置自动保存在当前浏览器的本地存储；点击“导出摆放 JSON”可以把布局文件发来继续制作。网页只在本机的 `127.0.0.1` 提供服务，不接入现有主页。
