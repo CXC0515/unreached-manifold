@@ -47,3 +47,16 @@ bash /Users/cxc/Projects/personal/unreached-manifold-sticker-garden/sticker-stud
 同一个本地服务启动后，打开 `http://127.0.0.1:8765/unreached-manifold-sticker-garden/sticker-study/garden.html`。`layout.json` 是用户在编辑器导出的 23 件贴纸布局，保留位置、大小、旋转和层级；其中路灯和花圃各有两张。
 
 试玩时拖贴纸靠近对应轮廓即可吸附；也可以先点贴纸，再点轮廓。完成全部 23 件后相机可拍摄，展示基于现有主页文案的作品介绍；顶部始终保留“直接看作品”。进度只存在当前浏览器的本地存储。此页是独立实验，没有接入主页，也没有真实拍照、作品详情页或部署。
+
+## 完整主页预览
+
+`home.html` 是贴纸花园版个人主页预览，仍留在独立 worktree，不替换现有首页。它把贴纸包放到底板左侧纸面，包内每页显示四张贴纸；右侧 23 件目标的位置、比例与层级仍由 `layout.json` 决定。页面下方有 AI 产品作品、空间探索和个人介绍；「直接看作品」始终可用。
+
+启动同一个本地服务后打开：
+
+```text
+http://127.0.0.1:8765/unreached-manifold-sticker-garden/sticker-study/home.html
+```
+
+`assets/` 保存了此预览需要的底板、贴纸包与 21 种贴纸 WebP，原始 Gemini JPEG 与生成的 PNG 均未改动。摄影区当前是明确标注的插画示意；拍摄按钮生成网页内的模拟相纸，不调用设备相机。
+完整主页预览只依赖 `assets/`，即使未运行贴纸 PNG 生成脚本，也可以用 `serve-editor.sh` 打开；原编辑页与试玩页仍需要 `generated/stickers/`。
