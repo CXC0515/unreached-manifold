@@ -41,3 +41,9 @@ bash /Users/cxc/Projects/personal/unreached-manifold-sticker-garden/sticker-stud
 ```
 
 浏览器打开 `http://127.0.0.1:8765/unreached-manifold-sticker-garden/sticker-study/editor.html`。编辑页从空画布开始，可拖放或点击添加贴纸，选中后缩放、旋转、调整层级、复制或移除。位置自动保存在当前浏览器的本地存储；点击“导出摆放 JSON”可以把布局文件发来继续制作。网页只在本机的 `127.0.0.1` 提供服务，不接入现有主页。
+
+## 拼贴试玩页
+
+同一个本地服务启动后，打开 `http://127.0.0.1:8765/unreached-manifold-sticker-garden/sticker-study/garden.html`。`layout.json` 是用户在编辑器导出的 23 件贴纸布局，保留位置、大小、旋转和层级；其中路灯和花圃各有两张。
+
+试玩时拖贴纸靠近对应轮廓即可吸附；也可以先点贴纸，再点轮廓。完成全部 23 件后相机可拍摄，展示基于现有主页文案的作品介绍；顶部始终保留“直接看作品”。进度只存在当前浏览器的本地存储。此页是独立实验，没有接入主页，也没有真实拍照、作品详情页或部署。

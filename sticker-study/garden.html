@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f4f0e6">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='11' fill='%23425d40'/%3E%3Ctext x='20' y='28' font-size='26' text-anchor='middle' fill='white'%3E%E2%9C%B3%3C/text%3E%3C/svg%3E">
+  <title>一座待完成的花园 · 拼贴试玩</title>
+  <link rel="stylesheet" href="garden.css">
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <a class="wordmark" href="garden.html" aria-label="花园试玩页首页"><span class="wordmark-icon">✳</span><span>未至 <small>UNREACHED</small></span></a>
+      <div class="topbar-actions">
+        <button id="works-button" class="text-button" type="button">直接看作品 <span aria-hidden="true">↗</span></button>
+        <button id="reset-button" class="text-button reset-button" type="button">重新拼贴</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="title">
+        <div><p class="eyebrow">AN INTERACTIVE GARDEN / 01</p><h1 id="title">把这座花园，<em>慢慢贴好。</em></h1><p class="intro-copy">从贴纸箱挑选元素，放到花园里的淡色轮廓上。路、池塘和摄影角落都由你亲手摆出。</p></div>
+        <div class="progress-card"><span>造景进度</span><strong id="progress-number">0 / 23</strong><div class="progress-track"><span id="progress-fill"></span></div><small id="progress-hint">还有 23 件等待安放</small></div>
+      </section>
+
+      <section class="garden-workspace" aria-label="拼贴花园">
+        <div class="scene-shell">
+          <div class="scene-topline"><span>01 / 花园地图</span><div class="scene-actions"><label for="zoom">缩放 <output id="zoom-output" for="zoom">100%</output></label><input id="zoom" type="range" min="100" max="180" step="10" value="100"><button id="camera-button" class="camera-button" type="button" disabled>◉ 拍摄</button></div></div>
+          <div id="scene-viewport" class="scene-viewport">
+            <div id="scene" class="scene" aria-label="花园造景画布">
+              <img id="background" class="scene-background" alt="" draggable="false">
+              <div class="paper-note" aria-hidden="true"><span>FIELD NOTE 001</span><strong>一张空白照片，<br>等你把它变成作品。</strong><i>↘</i></div>
+              <div id="targets" class="targets"></div>
+              <div id="placed-items" class="placed-items"></div>
+            </div>
+          </div>
+          <div class="scene-footer"><span id="scene-message">点击贴纸，再点击相同轮廓；也可以直接拖过去。</span><span>拖动地图可横向查看</span></div>
+        </div>
+
+        <aside class="sticker-box" aria-labelledby="sticker-box-title">
+          <div class="box-heading"><span class="eyebrow">02 / YOUR STICKER BOX</span><h2 id="sticker-box-title">贴纸箱</h2><p>顺序被打乱了。先找路，或从任何喜欢的地方开始。</p></div>
+          <div class="filter-row" role="group" aria-label="贴纸分类">
+            <button type="button" class="filter is-active" data-filter="all" aria-pressed="true">全部</button>
+            <button type="button" class="filter" data-filter="paths" aria-pressed="false">路与水</button>
+            <button type="button" class="filter" data-filter="studio" aria-pressed="false">摄影</button>
+            <button type="button" class="filter" data-filter="trees" aria-pressed="false">树木</button>
+            <button type="button" class="filter" data-filter="details" aria-pressed="false">细节</button>
+          </div>
+          <div id="sticker-list" class="sticker-list" aria-live="polite"></div>
+          <p class="box-tip">手机上可以点一张贴纸，再点画布里的对应轮廓。</p>
+        </aside>
+      </section>
+    </main>
+    <footer class="footer"><span>UNREACHED · 一座正在生长的花园</span><span>拼贴试玩 / 你的布局版本</span></footer>
+  </div>
+
+  <dialog id="reveal-dialog" class="reveal-dialog" aria-labelledby="reveal-title">
+    <button id="close-dialog" class="dialog-close" type="button" aria-label="关闭">×</button>
+    <div id="shot-photo" class="shot-photo" aria-hidden="true"><div id="shot-scene" class="shot-scene"></div><span>UNREACHED / GARDEN STUDY</span></div>
+    <div class="reveal-copy"><p id="reveal-eyebrow" class="eyebrow">A PHOTO FROM THE GARDEN</p><h2 id="reveal-title">把想法，拍成能用的作品。</h2><p id="reveal-intro">花园完成了。镜头里留下的，是把真实需求、资料与 AI 连接起来的产品思考。</p><div class="work-card"><span>FEATURED PROJECT / 001</span><h3>教师 AI 工作台</h3><p>从一次回答，到完整工作流。以教学任务为起点，把资料、生成与人工确认串联起来。</p><div><small>任务编排</small><small>检索增强</small><small>人机协同</small></div></div><div class="other-works"><span>继续探索</span><p>时空经纬 · 遥感与城市计算</p><p>灵感晶体 · 产品方法与知识手记</p></div></div>
+  </dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="garden.js"></script>
+</body>
+</html>

@@ -10,5 +10,6 @@ if [[ ! -f "$SCRIPT_DIR/generated/stickers/path_entry.png" ]]; then
   exit 1
 fi
 
-printf 'Open http://127.0.0.1:%s/unreached-manifold-sticker-garden/sticker-study/editor.html\n' "$PORT"
+printf 'Sticker editor: http://127.0.0.1:%s/unreached-manifold-sticker-garden/sticker-study/editor.html\n' "$PORT"
+printf 'Garden game:   http://127.0.0.1:%s/unreached-manifold-sticker-garden/sticker-study/garden.html\n' "$PORT"
 exec python3 -m http.server "$PORT" --bind 127.0.0.1 --directory "$WORKSPACE_DIR"
