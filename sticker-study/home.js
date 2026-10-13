@@ -301,6 +301,39 @@ $('#zoom').addEventListener('input', (event) => {
 });
 $('#camera-button').addEventListener('click', () => openReveal('shot'));
 $('#reveal-dialog .reveal-link').addEventListener('click', () => $('#reveal-dialog').close());
+const legacyDialog = $('#legacy-dialog');
+const legacyFrame = $('#legacy-frame');
+const legacyNames = ['教师 AI 工作台', '空间与城市', '知识手记'];
+let legacyPhase = 0;
+function selectLegacyPhase(attempt = 0) {
+  if (!legacyDialog.open) return;
+  const dockButtons = legacyFrame.contentDocument?.querySelectorAll('.dock-item');
+  if (!dockButtons?.length) {
+    if (attempt < 30) setTimeout(() => selectLegacyPhase(attempt + 1), 50);
+    return;
+  }
+  dockButtons[legacyPhase]?.click();
+  setTimeout(() => {
+    if (!legacyDialog.open) return;
+    const content = legacyFrame.contentDocument?.querySelector('.phase-content');
+    content?.scrollIntoView({ block: 'start', behavior: 'instant' });
+  }, 420);
+}
+legacyFrame.addEventListener('load', () => {
+  if (legacyDialog.open) selectLegacyPhase();
+});
+document.querySelectorAll('.legacy-open').forEach((button) => button.addEventListener('click', () => {
+  legacyPhase = Number(button.dataset.legacyPhase);
+  $('#legacy-dialog-title').textContent = legacyNames[legacyPhase];
+  legacyDialog.showModal();
+  if (legacyFrame.getAttribute('src') !== 'original/index.html') legacyFrame.src = 'original/index.html';
+  else selectLegacyPhase();
+}));
+$('#legacy-close').addEventListener('click', () => legacyDialog.close());
+legacyDialog.addEventListener('click', (event) => {
+  if (event.target === legacyDialog) legacyDialog.close();
+});
+legacyDialog.addEventListener('close', () => { legacyFrame.src = 'about:blank'; });
 $('#reset-button').addEventListener('click', () => {
   if (!layout || !Object.keys(placed).length) return;
   if (!confirm('重新开始拼贴？当前进度会清空。')) return;

@@ -60,3 +60,5 @@ http://127.0.0.1:8765/unreached-manifold-sticker-garden/sticker-study/home.html
 
 `assets/` 保存了此预览需要的底板、贴纸包与 21 种贴纸 WebP，原始 Gemini JPEG 与生成的 PNG 均未改动。摄影区当前是明确标注的插画示意；拍摄按钮生成网页内的模拟相纸，不调用设备相机。
 完整主页预览只依赖 `assets/`，即使未运行贴纸 PNG 生成脚本，也可以用 `serve-editor.sh` 打开；原编辑页与试玩页仍需要 `generated/stickers/`。
+
+原版主页的三个互动模块没有删除。新预览的顶部「原版主页」可独立打开原版，作品区也可分别打开原有教师工作台、道路网络沙盒和知识手记。`original/` 是从此 worktree 未改动的原版 React 源码构建的静态快照，可由同一个本地服务直接访问；主仓库 `/Users/cxc/Projects/personal/unreached-manifold` 仍保持原状。若原版源码更新，需要重新运行 `npm run build -- --base ./ --outDir sticker-study/original` 更新快照。
