@@ -32,7 +32,7 @@ export default function TeacherWorkbench() {
     <article className="case-hero crystal-card">
       <div className="case-hero-copy">
         <p className="case-kicker"><ClipboardCheck size={15} /> 教师 AI 平台</p>
-        <h2 id="teacher-case-title">让每一份批改，<br /><span>都能回到依据。</span></h2>
+        <h2 id="teacher-case-title" tabIndex={-1}>让每一份批改，<br /><span>都能回到依据。</span></h2>
         <p className="case-lede">我把作业批改拆成题目解析、评分依据、样本试批、教师校准、批量批改和异常复核。目标是让教师看得见系统用了什么证据，也能改变最终结果。</p>
         <a className="case-jump" href="#case-decisions">看三个关键设计决定 <ArrowDownRight size={16} /></a>
       </div>

@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="garden.css">
   <link rel="stylesheet" href="home.css?v=3">
   <link rel="stylesheet" href="case-home.css?v=1">
+  <script>if (new URLSearchParams(location.search).has('embed')) document.documentElement.classList.add('garden-embedded');</script>
+  <link rel="stylesheet" href="embed.css?v=2">
 </head>
 <body>
   <a class="skip-link" href="#main">跳过导航，进入主页</a>
@@ -61,6 +63,6 @@
   <dialog id="reveal-dialog" class="reveal-dialog" aria-labelledby="reveal-title"><button id="close-dialog" class="dialog-close" type="button" aria-label="关闭">×</button><div id="shot-photo" class="shot-photo" aria-hidden="true"><div id="shot-scene" class="shot-scene"></div><span>UNREACHED / GARDEN STUDY</span></div><div class="reveal-copy"><p id="reveal-eyebrow" class="eyebrow">A PHOTO FROM THE GARDEN</p><h2 id="reveal-title">把想法，拍成能用的作品。</h2><p id="reveal-intro">花园完成了。镜头里留下的，是把真实需求、资料与 AI 连接起来的产品思考。</p><div class="work-card"><span>PERSONAL PROJECT / 001</span><h3>教师 AI 平台</h3><p>打开案例，看三个实际决定：先用试批校准依据、让识别回到原卷、把确认方式交给教师。</p><div><small>试批校准</small><small>证据核对</small><small>教师确认</small></div></div><a class="reveal-link" href="#work">查看完整案例 ↗</a></div></dialog>
   <dialog id="legacy-dialog" class="legacy-dialog" aria-labelledby="legacy-dialog-title"><div class="legacy-dialog-bar"><div><span>EXPLORE THE DETAILS</span><strong id="legacy-dialog-title">项目详情</strong></div><div><a href="original/index.html" target="_blank" rel="noopener">独立打开 ↗</a><button id="legacy-close" type="button" aria-label="关闭详情">×</button></div></div><iframe id="legacy-frame" title="个人项目、求学与手记详情" loading="lazy"></iframe></dialog>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <script type="module" src="home.js?v=3"></script>
+  <script type="module" src="home.js?v=4"></script>
 </body>
 </html>

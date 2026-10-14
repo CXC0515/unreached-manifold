@@ -1,4 +1,5 @@
 const STORAGE_KEY = 'sticker-garden-home-v1';
+const embedded = document.documentElement.classList.contains('garden-embedded');
 const LABELS = {
   path_entry: '入口小路', path_bend: '转弯小路', path_camera: '拍摄小路',
   pond_a: '池塘一', pond_b: '池塘二', bridge: '木桥',
@@ -266,6 +267,7 @@ function openReveal(mode) {
     : '不用完成花园，也可以直接进入教师 AI 平台的完整案例。';
   renderShotScene();
   $('#reveal-dialog').showModal();
+  if (embedded) window.parent.postMessage({ type: 'sticker-garden:reveal-open' }, location.origin);
 }
 async function init() {
   try {
@@ -334,6 +336,10 @@ document.querySelectorAll('.legacy-open').forEach((button) => button.addEventLis
 $('#reveal-dialog .reveal-link').addEventListener('click', (event) => {
   event.preventDefault();
   $('#reveal-dialog').close();
+  if (embedded) {
+    window.parent.postMessage({ type: 'sticker-garden:open-case' }, location.origin);
+    return;
+  }
   openLegacyPhase(0);
 });
 $('#legacy-close').addEventListener('click', () => legacyDialog.close());
@@ -356,6 +362,9 @@ $('#close-dialog').addEventListener('click', () => $('#reveal-dialog').close());
 $('#reveal-dialog').addEventListener('click', (event) => {
   if (event.target === event.currentTarget) event.currentTarget.close();
 });
+$('#reveal-dialog').addEventListener('close', () => {
+  if (embedded) window.parent.postMessage({ type: 'sticker-garden:reveal-close' }, location.origin);
+});
 window.addEventListener('keydown', (event) => {
   if (event.key === 'Escape' && selectedCard && !$('#reveal-dialog').open) {
     selectedCard = null;
@@ -363,4 +372,13 @@ window.addEventListener('keydown', (event) => {
     renderBoard();
   }
 });
+if (embedded) {
+  const garden = $('#garden');
+  const reportHeight = () => window.parent.postMessage({
+    type: 'sticker-garden:resize',
+    height: Math.ceil(garden.getBoundingClientRect().bottom + 4),
+  }, location.origin);
+  new ResizeObserver(reportHeight).observe(garden);
+  window.addEventListener('load', reportHeight);
+}
 init();
