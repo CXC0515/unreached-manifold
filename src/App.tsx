@@ -6,9 +6,9 @@ import TeacherWorkbench from './components/TeacherWorkbench';
 import PhaseSpatial from './components/PhaseSpatial';
 import PhaseVault from './components/PhaseVault';
 const phases = [
- {name:'神经工作台',en:'COGNITION',icon:Sparkles,heading:<>让想法生长，<br/>让智能<span>发生。</span></>,description:'在人工智能与真实需求之间，构建有温度的产品与系统。',subtitle:'AI PRODUCT THINKING · SYSTEM DESIGN'},
+ {name:'神经工作台',en:'COGNITION',icon:Sparkles,heading:<>把 AI 放进教师的<br/><span>真实工作流。</span></>,description:'一个持续迭代的个人项目：让作业批改的依据能被核对，结果能由教师确认。',subtitle:'PERSONAL PROJECT · TEACHER AI'},
  {name:'时空经纬',en:'EDUCATION',icon:Compass,heading:<>走过的地方，<br/>留下<span>我的坐标。</span></>,description:'从南京信息工程大学到香港理工大学，翻开两段求学路上的观察与思考。',subtitle:'EDUCATION · MY JOURNEY'},
- {name:'灵感晶体',en:'TEMPORAL VAULT',icon:Layers3,heading:<>把此刻的理解，<br/>留给<span>未来。</span></>,description:'收藏值得反复使用的方法，让零散经验沉淀为清晰的知识。',subtitle:'WORKING NOTES · IDEAS IN PROGRESS'},
+ {name:'灵感晶体',en:'TEMPORAL VAULT',icon:Layers3,heading:<>把项目里的决定，<br/>写成<span>可检查的手记。</span></>,description:'三则来自个人项目的复盘：讲清遇到的问题、做过的取舍与验证边界。',subtitle:'PROJECT NOTES · DESIGN DECISIONS'},
 ];
 function Clock(){const [time,setTime]=useState(new Date());useEffect(()=>{const timer=setInterval(()=>setTime(new Date()),1000);return()=>clearInterval(timer);},[]);return <span>UTC {time.toLocaleTimeString('en-GB',{timeZone:'UTC'})}</span>;}
 function OrbitalArt(){return <div className="orbital-art" aria-hidden="true"><div className="orbital-caption">FIG. 01 — A THOUGHT TAKING SHAPE</div><div className="art-axis axis-x"/><div className="art-axis axis-y"/><div className="orbital-halo"/><div className="silk-orbit orbit-one"/><div className="silk-orbit orbit-two"/><div className="silk-orbit orbit-three"/><div className="orbital-core"><span/></div><div className="orbit-label label-a"><i/> HUMAN INTENT</div><div className="orbit-label label-b"><i/> INTELLIGENT SYSTEM</div><span className="art-coordinate">x 0.618<br/>y 0.382</span><div className="specimen-index">认知 · 空间 · 可能性</div></div>;}

@@ -260,10 +260,10 @@ function renderShotScene() {
 function openReveal(mode) {
   if (mode === 'shot' && !isComplete()) return;
   $('#reveal-eyebrow').textContent = mode === 'shot' ? 'A PHOTO FROM THE GARDEN' : 'WORKS / DIRECT ACCESS';
-  $('#reveal-title').textContent = mode === 'shot' ? '把想法，拍成能用的作品。' : '我的作品与探索';
+  $('#reveal-title').textContent = mode === 'shot' ? '花园完成，来看看我做的项目。' : '直接看我的个人项目';
   $('#reveal-intro').textContent = mode === 'shot'
-    ? '花园完成了。镜头里留下的，是把真实需求、资料与 AI 连接起来的产品思考。'
-    : '可以直接看内容，不需要先拼完花园。这里沿用当前主页已有的项目与方向介绍。';
+    ? '这座花园通向教师 AI 平台：从批改依据、识别证据，到教师怎样确认最终结果。'
+    : '不用完成花园，也可以直接进入教师 AI 平台的完整案例。';
   renderShotScene();
   $('#reveal-dialog').showModal();
 }
@@ -300,10 +300,9 @@ $('#zoom').addEventListener('input', (event) => {
   $('#zoom-output').textContent = `${value}%`;
 });
 $('#camera-button').addEventListener('click', () => openReveal('shot'));
-$('#reveal-dialog .reveal-link').addEventListener('click', () => $('#reveal-dialog').close());
 const legacyDialog = $('#legacy-dialog');
 const legacyFrame = $('#legacy-frame');
-const legacyNames = ['教师 AI 工作台', '求学路径', '知识手记'];
+const legacyNames = ['教师 AI 平台案例', '求学路径', '项目手记'];
 let legacyPhase = 0;
 function selectLegacyPhase(attempt = 0) {
   if (!legacyDialog.open) return;
@@ -322,13 +321,21 @@ function selectLegacyPhase(attempt = 0) {
 legacyFrame.addEventListener('load', () => {
   if (legacyDialog.open) selectLegacyPhase();
 });
-document.querySelectorAll('.legacy-open').forEach((button) => button.addEventListener('click', () => {
-  legacyPhase = Number(button.dataset.legacyPhase);
+function openLegacyPhase(phase) {
+  legacyPhase = phase;
   $('#legacy-dialog-title').textContent = legacyNames[legacyPhase];
   legacyDialog.showModal();
   if (legacyFrame.getAttribute('src') !== 'original/index.html') legacyFrame.src = 'original/index.html';
   else selectLegacyPhase();
+}
+document.querySelectorAll('.legacy-open').forEach((button) => button.addEventListener('click', () => {
+  openLegacyPhase(Number(button.dataset.legacyPhase));
 }));
+$('#reveal-dialog .reveal-link').addEventListener('click', (event) => {
+  event.preventDefault();
+  $('#reveal-dialog').close();
+  openLegacyPhase(0);
+});
 $('#legacy-close').addEventListener('click', () => legacyDialog.close());
 legacyDialog.addEventListener('click', (event) => {
   if (event.target === legacyDialog) legacyDialog.close();
