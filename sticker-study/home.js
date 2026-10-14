@@ -303,7 +303,7 @@ $('#camera-button').addEventListener('click', () => openReveal('shot'));
 $('#reveal-dialog .reveal-link').addEventListener('click', () => $('#reveal-dialog').close());
 const legacyDialog = $('#legacy-dialog');
 const legacyFrame = $('#legacy-frame');
-const legacyNames = ['教师 AI 工作台', '空间与城市', '知识手记'];
+const legacyNames = ['教师 AI 工作台', '求学路径', '知识手记'];
 let legacyPhase = 0;
 function selectLegacyPhase(attempt = 0) {
   if (!legacyDialog.open) return;
