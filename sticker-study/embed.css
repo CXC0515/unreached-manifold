@@ -1,0 +1,44 @@
+.garden-embedded, .garden-embedded body { background: transparent; }
+.garden-embedded body { overflow-x: hidden; }
+.garden-embedded .home-header,
+.garden-embedded .home-hero,
+.garden-embedded .work-section,
+.garden-embedded .about-section,
+.garden-embedded .home-footer { display: none; }
+
+.garden-embedded .garden-section {
+  padding: 12px 0 18px;
+  background: transparent;
+  color: #263b34;
+}
+.garden-embedded .section-index { color: #608678; }
+.garden-embedded .section-head h2 {
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif;
+  font-weight: 600;
+  font-size: clamp(25px, 2.8vw, 38px);
+  letter-spacing: -.045em;
+}
+.garden-embedded .section-head h2 em { color: #74a38f; }
+.garden-embedded .section-head p { color: #667670; }
+.garden-embedded .garden-counter strong { font-family: inherit; }
+.garden-embedded .game-frame {
+  border: 1px solid #dbe7e1;
+  background: #fafffc;
+  box-shadow: 0 12px 44px #4b796418;
+}
+.garden-embedded .frame-toolbar,
+.garden-embedded .frame-foot { background: #fafffc; }
+.garden-embedded .garden-hints { margin-top: 16px; }
+.garden-embedded .reveal-dialog {
+  position: fixed;
+  inset: 0 16px;
+  margin: auto;
+  max-height: min(780px, calc(100vh - 40px));
+}
+
+@media (max-width: 720px) {
+  .garden-embedded .garden-section { padding-top: 0; }
+  .garden-embedded .section-head h2 { font-size: 27px; }
+  .garden-embedded .garden-hints { display: none; }
+  .garden-embedded .reveal-dialog { inset: 10px 8px auto; margin: 0 auto; max-height: calc(100vh - 20px); }
+}

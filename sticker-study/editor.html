@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f4f0e6">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='11' fill='%23425d40'/%3E%3Ctext x='20' y='28' font-size='26' text-anchor='middle' fill='white'%3E%E2%9C%B3%3C/text%3E%3C/svg%3E">
+  <title>造景贴纸 · 摆放台</title>
+  <link rel="stylesheet" href="editor.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="masthead">
+      <div class="brand-mark" aria-hidden="true">✳</div>
+      <div class="masthead-copy">
+        <p class="eyebrow">STICKER GARDEN / LAYOUT STUDY</p>
+        <h1>把花园摆成你喜欢的样子</h1>
+        <p>先自由造景。你定好位置，我再把它变成可探索的主页。</p>
+      </div>
+      <div class="masthead-actions">
+        <button id="export-button" class="button button-primary" type="button">导出摆放 JSON <span aria-hidden="true">↗</span></button>
+        <button id="reset-button" class="button button-subtle" type="button">清空画布</button>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <aside class="palette" aria-labelledby="palette-heading">
+        <div class="panel-heading">
+          <span class="panel-index">01 / 贴纸库</span>
+          <h2 id="palette-heading">挑选元素</h2>
+          <p>拖住贴纸放进花园；也可以点“添加”。</p>
+        </div>
+        <div class="palette-filters" role="group" aria-label="贴纸分类">
+          <button type="button" class="filter is-active" data-filter="all" aria-pressed="true">全部 <span id="total-count">21</span></button>
+          <button type="button" class="filter" data-filter="paths" aria-pressed="false">路与水</button>
+          <button type="button" class="filter" data-filter="studio" aria-pressed="false">摄影</button>
+          <button type="button" class="filter" data-filter="trees" aria-pressed="false">树木</button>
+          <button type="button" class="filter" data-filter="details" aria-pressed="false">细节</button>
+        </div>
+        <div id="sticker-list" class="sticker-list" aria-live="polite"></div>
+      </aside>
+
+      <section class="scene-panel" aria-labelledby="scene-heading">
+        <div class="scene-heading">
+          <div>
+            <span class="panel-index">02 / 场景画布</span>
+            <h2 id="scene-heading">你的花园 <span id="placed-count" class="count-pill">0 件</span></h2>
+          </div>
+          <div class="zoom-control">
+            <label for="zoom">画布缩放 <output id="zoom-value" for="zoom">100%</output></label>
+            <input id="zoom" type="range" min="100" max="200" step="10" value="100">
+          </div>
+        </div>
+        <div id="scene-viewport" class="scene-viewport">
+          <div id="scene" class="scene" aria-label="花园画布，可摆放贴纸">
+            <img class="scene-background" src="../../new/Gemini_Generated_Image_4xpf984xpf984xpf.jpeg" alt="" draggable="false">
+            <div id="scene-items" class="scene-items"></div>
+            <div id="empty-note" class="empty-note" aria-hidden="true"><span>从左边挑一张贴纸，<br>开始造景</span></div>
+          </div>
+        </div>
+        <p class="scene-tip">提示：点击已摆放的贴纸可调整大小、旋转和层级。方向键可微调位置。</p>
+      </section>
+
+      <aside class="inspector" aria-labelledby="inspector-heading">
+        <div class="panel-heading">
+          <span class="panel-index">03 / 调整</span>
+          <h2 id="inspector-heading">贴纸属性</h2>
+          <p id="selection-message">选中画布上的贴纸后，在这里细调。</p>
+        </div>
+        <div id="inspector-controls" class="inspector-controls" hidden>
+          <div class="selected-preview"><img id="selected-image" alt=""><div><span class="small-label">当前选中</span><strong id="selected-name"></strong></div></div>
+          <label class="control-label" for="size">大小 <output id="size-value" for="size"></output></label>
+          <input id="size" type="range" min="3" max="45" step="0.5">
+          <label class="control-label" for="rotation">旋转 <output id="rotation-value" for="rotation"></output></label>
+          <input id="rotation" type="range" min="-180" max="180" step="1">
+          <div class="two-buttons">
+            <button id="back-button" class="button button-outline" type="button">往后一层</button>
+            <button id="front-button" class="button button-outline" type="button">往前一层</button>
+          </div>
+          <div class="two-buttons">
+            <button id="duplicate-button" class="button button-outline" type="button">复制一张</button>
+            <button id="remove-button" class="button button-danger" type="button">移出画布</button>
+          </div>
+        </div>
+        <div class="save-state"><span class="save-dot" aria-hidden="true"></span><span id="save-message">摆放会自动保存在本机浏览器</span></div>
+      </aside>
+    </main>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </div>
+  <script type="module" src="editor.js"></script>
+</body>
+</html>

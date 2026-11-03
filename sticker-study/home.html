@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f1e8">
+  <meta name="description" content="未至的个人主页：一座可以亲手拼贴的花园，记录 AI 产品、求学经历与摄影兴趣。">
+  <title>未至 · 把想法种成可以抵达的地方</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='11' fill='%233c5742'/%3E%3Ctext x='20' y='28' font-size='26' text-anchor='middle' fill='white'%3E%E2%9C%B3%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="garden.css">
+  <link rel="stylesheet" href="home.css?v=3">
+  <link rel="stylesheet" href="case-home.css?v=1">
+  <script>if (new URLSearchParams(location.search).has('embed')) document.documentElement.classList.add('garden-embedded');</script>
+  <link rel="stylesheet" href="embed.css?v=2">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳过导航，进入主页</a>
+  <header class="home-header">
+    <a class="home-brand" href="#top" aria-label="未至，返回顶部"><span class="brand-flower">✳</span><span>未至<small>UNREACHED</small></span></a>
+    <nav class="home-nav" aria-label="主页导航"><a href="#garden">花园</a><a href="#work">作品</a><a href="#legacy">求学与手记</a><a href="#about">关于</a></nav>
+    <a class="header-link" href="original/index.html" target="_blank" rel="noopener">原版主页 <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main id="main">
+    <section class="home-hero" id="top" aria-labelledby="home-title">
+      <div class="hero-topline"><span>AN AI PRODUCT MAKER'S GARDEN</span><span>EST. IN CURIOSITY · 2026</span></div>
+      <div class="hero-main"><div><p class="hero-kicker"><span class="sun-mark">✳</span> 一座可以亲手完成的个人主页</p><h1 id="home-title">把想法，<br><em>种成可以抵达的地方。</em></h1><p class="hero-description">你好，我是一名 AI 产品经理。我喜欢把复杂问题理清，也喜欢拍下那些值得停留的瞬间。这里是一座还没贴完的花园，欢迎和我一起完成它。</p><div class="hero-cta"><a class="cta-primary" href="#garden">走进花园 <span aria-hidden="true">↘</span></a><a class="cta-secondary" href="#work">我想先看作品 <span aria-hidden="true">↗</span></a></div></div><div class="hero-annotation" aria-hidden="true"><div class="orbit-note"><span>01</span><b>探索</b><i>↗</i></div><div class="orbit-note"><span>02</span><b>造景</b><i>↗</i></div><div class="orbit-note"><span>03</span><b>拍摄</b><i>↗</i></div><div class="annotation-ring">✳</div></div></div>
+      <div class="hero-bottom"><span>SCROLL TO PLAY</span><span class="hero-line"></span><span>玩一会儿，或直接往下看</span></div>
+    </section>
+
+    <section class="garden-section" id="garden" aria-labelledby="garden-title">
+      <div class="section-head"><div><span class="section-index">01 / THE GARDEN</span><h2 id="garden-title">一张底板，<em>二十三个想法。</em></h2><p>从左边的贴纸包取出一件，放到相同的淡色轮廓上。全部贴好后，去摄影角落拍一张。</p></div><div class="garden-counter"><span>你的造景进度</span><strong id="progress-number">0 / 23</strong><div class="progress-track"><span id="progress-fill"></span></div><small id="progress-hint">还有 23 件等待安放</small></div></div>
+      <div class="game-frame scene-shell">
+        <div class="frame-toolbar"><div class="frame-title"><span class="live-dot"></span><span>STICKER GARDEN</span><small>互动场景 · 你的布局</small></div><div class="frame-actions"><button id="pack-jump" type="button" class="pack-jump">打开贴纸包</button><label for="zoom">地图缩放 <output id="zoom-output" for="zoom">100%</output></label><input id="zoom" type="range" min="100" max="180" step="10" value="100"><button id="camera-button" class="camera-button" type="button" disabled>◉ 拍摄作品</button></div></div>
+        <div class="scene-viewport" id="scene-viewport"><div id="scene" class="scene" aria-label="花园造景画布"><img id="background" class="scene-background" src="assets/background.webp" alt="" draggable="false"><div id="targets" class="targets"></div><div id="placed-items" class="placed-items"></div><div class="pack" aria-label="贴纸包"><img src="assets/pack.webp" alt="" draggable="false"><div class="pack-flap"><span>UNREACHED / 01</span><strong>一包未完成<br>的花园</strong><small>取一张贴纸，开始造景</small></div><div id="sticker-list" class="sticker-list"></div><div class="pack-bottom"><button id="page-prev" type="button" aria-label="上一页">‹</button><span id="page-indicator">01 / 06</span><button id="page-next" type="button" aria-label="下一页">›</button></div></div></div></div>
+        <div class="frame-foot"><span id="scene-message">点击包里的贴纸，再点击相同轮廓；也可以直接拖过去。</span><button id="reset-button" type="button">重新开始 <span aria-hidden="true">↺</span></button></div>
+      </div>
+      <div class="garden-hints"><div><b>01</b><span>取一张贴纸<small>点击、拖动，或键盘选中</small></span></div><div><b>02</b><span>找到它的位置<small>相同轮廓会发亮</small></span></div><div><b>03</b><span>按下快门<small>花园完成后揭晓作品</small></span></div></div>
+    </section>
+
+    <section class="work-section" id="work" aria-labelledby="work-title">
+      <div class="work-intro"><div><span class="section-index">02 / PERSONAL PROJECT</span><h2 id="work-title">花园之外，<br><em>我在做的事。</em></h2></div><p>这里展示我自己设计与实现的教师 AI 平台。你可以先看三个实际设计决定，再打开完整案例；无需完成花园。</p></div>
+      <div class="featured-work">
+        <div class="featured-visual case-visual" aria-label="教师 AI 平台的三个设计决定">
+          <span class="visual-cap">PROJECT NOTES / 001</span>
+          <div class="case-visual-list">
+            <div><span>01 / 依据</span><strong>先试批，再批量</strong><p>教师核对采分点与少量答卷后，再选择后续处理方式。</p></div>
+            <div><span>02 / 证据</span><strong>识别能回到原卷</strong><p>答卷截图与不同识别来源保留在同一条核对路径中。</p></div>
+            <div><span>03 / 控制</span><strong>教师决定何时接管</strong><p>逐份确认、分批确认和自动继续对应不同任务需要。</p></div>
+          </div>
+          <span class="visual-foot">REAL WORKFLOW / NO STUDENT DATA SHOWN</span>
+        </div>
+        <div class="featured-copy"><span class="work-num">PERSONAL PROJECT — 001</span><h3>教师 AI 平台</h3><p class="work-lead">让每一份批改，都能回到依据。</p><p>我把题目解析、评分依据、样本试批、批量批改与异常复核接成一条可检查的流程。这里讲的是已实现的产品设计，不用一个“运行示例”代替真实项目。</p><div class="tag-row"><span>个人项目</span><span>证据核对</span><span>教师确认</span></div><button class="legacy-open inline" type="button" data-legacy-phase="0">查看完整案例 <span aria-hidden="true">↗</span></button><small>页面不展示学生原卷，也不以示意流程宣称模型效果。</small></div>
+      </div>
+      <div class="legacy-head" id="legacy"><div><span class="section-index">KEEP EXPLORING</span><h3>再往前走一点。</h3><p>求学路径与项目手记都可以直接打开。</p></div><a href="original/index.html" target="_blank" rel="noopener">用原版配色浏览完整主页 ↗</a></div>
+      <div class="other-grid"><button type="button" class="legacy-open legacy-card" data-legacy-phase="1"><span>EDUCATION / 002</span><h3>我的求学路径</h3><p>翻开两枚地点贴纸，认识我在南京信息工程大学与香港理工大学的求学经历。</p><div class="card-line">打开求学路径 <b>↗</b></div></button><button type="button" class="legacy-open legacy-card" data-legacy-phase="2"><span>PROJECT NOTES / 003</span><h3>项目手记</h3><p>三则来自个人项目的真实复盘：试批校准、识别证据与材料原件。</p><div class="card-line">打开项目手记 <b>↗</b></div></button></div>
+    </section>
+
+    <section class="about-section" id="about" aria-labelledby="about-title"><div class="about-photo" aria-hidden="true"><div class="photo-landscape"><span class="photo-sun"></span><span class="photo-hill back"></span><span class="photo-hill front"></span><span class="photo-path"></span></div><div class="polaroid-caption">CAMERA NOTES · ILLUSTRATION</div></div><div class="about-copy"><span class="section-index">03 / BEHIND THE LENS</span><h2 id="about-title">观察世界，<br><em>也设计抵达它的路。</em></h2><p>摄影让我练习观察：什么值得被看见，什么细节需要靠近。做产品也是一样——先找到真正的问题，再决定把技术放在哪里。</p><p>我的背景连接遥感科学与城市信息学；现在把这份对空间、证据和人的兴趣，带进 AI 产品设计。</p><div class="about-sign">保持好奇，行而未至。<span>UNREACHED ↗</span></div></div></section>
+  </main>
+  <footer class="home-footer"><div><strong>未至 <span>✳</span></strong><p>把想法种成可以抵达的地方。</p></div><div><a href="#top">回到顶部 ↑</a><a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">苏ICP备2026068672号-1</a><small>© 2026 UNREACHED · A PERSONAL EXPLORATION</small></div></footer>
+
+  <dialog id="reveal-dialog" class="reveal-dialog" aria-labelledby="reveal-title"><button id="close-dialog" class="dialog-close" type="button" aria-label="关闭">×</button><div id="shot-photo" class="shot-photo" aria-hidden="true"><div id="shot-scene" class="shot-scene"></div><span>UNREACHED / GARDEN STUDY</span></div><div class="reveal-copy"><p id="reveal-eyebrow" class="eyebrow">A PHOTO FROM THE GARDEN</p><h2 id="reveal-title">把想法，拍成能用的作品。</h2><p id="reveal-intro">花园完成了。镜头里留下的，是把真实需求、资料与 AI 连接起来的产品思考。</p><div class="work-card"><div class="work-card-head"><div><span>PERSONAL PROJECT / 001</span><h3>教师 AI 平台</h3></div><a class="reveal-qingsong" id="reveal-qingsong" href="https://td.unreached.top/" target="_blank" rel="noopener noreferrer" hidden>体验青松 <span aria-hidden="true">↗</span></a></div><p>打开案例，看三个实际决定：先用试批校准依据、让识别回到原卷、把确认方式交给教师。</p><div><small>试批校准</small><small>证据核对</small><small>教师确认</small></div></div><a class="reveal-link" href="#work">查看完整案例 ↗</a></div></dialog>
+  <dialog id="legacy-dialog" class="legacy-dialog" aria-labelledby="legacy-dialog-title"><div class="legacy-dialog-bar"><div><span>EXPLORE THE DETAILS</span><strong id="legacy-dialog-title">项目详情</strong></div><div><a href="original/index.html" target="_blank" rel="noopener">独立打开 ↗</a><button id="legacy-close" type="button" aria-label="关闭详情">×</button></div></div><iframe id="legacy-frame" title="个人项目、求学与手记详情" loading="lazy"></iframe></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="home.js?v=4"></script>
+</body>
+</html>

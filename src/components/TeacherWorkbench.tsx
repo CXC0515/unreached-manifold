@@ -1,30 +1,72 @@
-import { useState } from 'react';
-import { ArrowUpRight, BookOpen, Check, GitBranch, Play, RotateCcw, Sparkles, Workflow } from 'lucide-react';
-const steps = [
- { name: '教学目标', label: '定义学习任务与约束', detail: '从课时、学情与学习目标开始，将宽泛需求转为可检查的任务。', icon: BookOpen },
- { name: '知识检索', label: '让每个结论有出处', detail: '检索课程资料并保留引用；资料不足时明确缺口，不以生成补充事实。', icon: GitBranch },
- { name: '教案生成', label: '组织可编辑的初稿', detail: '将证据、目标与教学活动组合为初稿，保留教师的修改入口。', icon: Sparkles },
- { name: '教师确认', label: '把决定权交还给人', detail: '教师核验内容与来源后确认，反馈进入下一轮改进。', icon: Check },
-];
-export default function TeacherWorkbench(){
- const [selected,setSelected] = useState(1); const [executed,setExecuted] = useState(false); const [tokens,setTokens] = useState(12000);
- const Icon=steps[selected].icon;
- return <>
- <div className="section-heading"><div><span className="eyebrow">01 / SELECTED EXPLORATION</span><h2>让复杂系统，回到人的尺度。</h2></div><span className="section-note">产品思考 × 工程实践</span></div>
- <section className="workbench crystal-card">
-  <div className="demo-window">
-   <div className="window-bar"><span className="window-dots"><i/><i/><i/></span><span>Teacher AI · 工作流实验室</span><span className="tiny-tag">交互原型</span></div>
-   <div className="workflow-title"><span><Workflow size={15}/> 备课协同工作流</span><span className="eyebrow">HUMAN IN THE LOOP</span></div>
-   <div className="workflow-nodes">{steps.map((step,i)=><div className="node-wrap" key={step.name}><button className={`workflow-node ${selected===i?'selected':''} ${executed?'executed':''}`} onClick={()=>setSelected(i)} aria-pressed={selected===i}><step.icon size={20}/><strong>{step.name}</strong><span>{executed ? (i===3?'等待人工确认':'示例步骤就绪') : `STEP 0${i+1}`}</span></button>{i<3&&<span className="node-connector">···</span>}</div>)}</div>
-   <div className="node-detail" aria-live="polite"><div className="node-icon"><Icon size={19}/></div><div><strong>{steps[selected].label}</strong><p>{steps[selected].detail}</p></div></div>
-   <div className="demo-bottom"><span className="muted"><span className="status-dot"/>{executed?'示例已展开 · 未调用模型':'可探索的产品逻辑'}</span><button className="small-button" onClick={()=>{setExecuted(!executed);setSelected(executed?1:3);}}>{executed?<RotateCcw size={13}/>:<Play size={13}/>} {executed?'重置演示':'运行示例'}</button></div>
-  </div>
-  <div className="project-story"><div className="eyebrow">FEATURED PROJECT / 001</div><h3>教师 AI 工作台<span>从一次回答，到完整工作流。</span></h3><p>以教学任务为起点，把资料、生成与人工确认串联起来。关注的不只是模型能做什么，更是教师能否真正用起来。</p><div className="project-tags"><span>任务编排</span><span>检索增强</span><span>人机协同</span></div><button className="text-button" onClick={()=>{setSelected((selected+1)%4);setExecuted(false);}}>探索工作流节点 <ArrowUpRight size={16}/></button><div className="honesty-note">交互为流程示意，项目成效以实际验证为准。</div></div>
- </section>
- <div className="bottom-grid">
-  <article className="crystal-card philosophy-card"><div className="eyebrow">MY APPROACH</div><h3>从问题出发，<br/>在反馈中迭代。</h3><div className="approach-steps"><span>洞察需求</span><i>↗</i><span>构建系统</span><i>↗</i><span>验证价值</span></div><span className="card-corner"><Workflow size={34} strokeWidth={1}/></span></article>
-  <article className="crystal-card profile-card"><div className="eyebrow">CROSS-DISCIPLINARY LENS</div><h3>空间，连接认知。</h3><p>遥感科学与技术 <span>×</span> 城市信息学</p><div className="school-line"><span>NUIST</span><i>↗</i><span>THE HONG KONG<br/>POLYTECHNIC UNIVERSITY</span></div></article>
-  <article className="crystal-card calculator-card"><div className="eyebrow">MICRO LAB / 估算实验</div><div className="calculator-title"><h3>Token 成本沙盘</h3><span>¥{(tokens/1000000*2).toFixed(3)}</span></div><label htmlFor="tokens">输入用量 <output>{tokens.toLocaleString()} tokens</output></label><input id="tokens" type="range" min="1000" max="100000" step="1000" value={tokens} onChange={e=>setTokens(Number(e.target.value))}/><p>假设输入单价 ¥2 / 百万 tokens，仅用于演示计算。</p></article>
- </div>
- </>;
+import { ArrowDownRight, ArrowUpRight, BookOpenCheck, ClipboardCheck, FileSearch, ScanSearch, UserRoundCheck } from 'lucide-react';
+import { LiquidGlass } from './LiquidGlass';
+import './teacher-case.css';
+
+const decisions = [
+  {
+    number: '01',
+    title: '用 Harness 把 AI 能力组织成工作流',
+    problem: '只靠一个大 Prompt 承担所有任务，规则、数据、工具和模型行为容易混在一起；结果出错时也难定位是哪一环出了问题。',
+    response: '按职责拆分主 Agent、Skill、受控工具、上下文组装与个人记忆：分别负责任务编排、业务规则、数据操作、按需供给信息和保留偏好，让能力可检查、可调整。',
+    icon: BookOpenCheck,
+  },
+  {
+    number: '02',
+    title: '从教师的一天出发设计产品',
+    problem: '教师的工作不是“使用一个 AI”，而是课前找材料和备课、课上记录、课后批改，再回看学生与班级情况。',
+    response: '围绕备课、上课、批改、回看组织工作台与助手入口，让记录和材料能接着用于下一步；电脑支持集中整理，手机支持随手查看和记录。',
+    icon: ScanSearch,
+  },
+  {
+    number: '03',
+    title: '用证据约束 AI 回答',
+    problem: '教学问题涉及具体班级、学生和材料；没有依据的流畅回答，可能把猜测包装成事实。',
+    response: '助手从有权限的业务记录和教师选定材料中作答，返回来源与读取范围；区分无记录、读取失败和信息不完整，让教师能回到原始依据核对。',
+    icon: UserRoundCheck,
+  },
+] as const;
+
+export default function TeacherWorkbench() {
+  return <section className="teacher-case" aria-labelledby="teacher-case-title">
+    <div className="case-heading"><span className="eyebrow">01 / PERSONAL PROJECT</span><span>产品设计与实现 · 持续迭代</span></div>
+
+    <article className="case-hero crystal-card">
+      <div className="case-hero-copy">
+        <p className="case-kicker"><ClipboardCheck size={15} /> 青松 · AI 教师工作台</p>
+        <h2 id="teacher-case-title" tabIndex={-1}>让教学里的每一步，<br /><span>都能接着往下做。</span></h2>
+        <p className="case-lede">从备课选材、课堂记录，到作业批改和学情回看，青松把教师日常要做的事放进同一个工作台。AI 助手帮助查记录、读材料和讨论教案；教师始终可以核对依据、修改并确认结果。</p>
+        <div className="case-actions">
+          <LiquidGlass className="liquid-control--accent"><a className="case-primary" href="https://td.unreached.top/" target="_blank" rel="noopener noreferrer">体验青松 <ArrowUpRight size={16}/></a></LiquidGlass>
+          <a className="case-secondary" href="https://icnphsiltmy8.feishu.cn/wiki/FkPRw4jtgieHSdkkDQFcd0XFnW0?from=from_copylink" target="_blank" rel="noopener noreferrer">阅读系统介绍 <ArrowUpRight size={15}/></a>
+        </div>
+        <p className="case-demo-note">平台提供虚构样例的访客演示，可先了解界面与流程。</p>
+        <a className="case-jump" href="#case-decisions">看三个关键设计决定 <ArrowDownRight size={16} /></a>
+      </div>
+      <div className="case-route" aria-label="青松教学工作流程">
+        <div className="case-route-top"><span>PROJECT MAP / 001</span><FileSearch size={18} /></div>
+        <ol>
+          <li><span>01</span><strong>备课与选材</strong><small>围绕同一份教案讨论、编辑与保存</small></li>
+          <li><span>02</span><strong>课堂记录</strong><small>从课表进入课次，记录任务与表现</small></li>
+          <li><span>03</span><strong>作业批改</strong><small>确认依据、试批校准、批量与复核</small></li>
+          <li><span>04</span><strong>回看学情</strong><small>结合批改与课堂记录，核对具体来源</small></li>
+        </ol>
+        <p>AI 助手贯穿其中：查记录、读材料，让下一步有据可依。</p>
+      </div>
+    </article>
+
+    <section className="case-decisions" id="case-decisions" aria-labelledby="case-decisions-title">
+      <div className="case-section-head"><div><span className="eyebrow">DESIGN DECISIONS</span><h3 id="case-decisions-title">我具体做了什么决定</h3></div><span>问题 → 处理方式</span></div>
+      <div className="case-decision-grid">{decisions.map((decision) => <article className="case-decision crystal-card" key={decision.number}>
+        <div className="case-decision-top"><span>{decision.number}</span><decision.icon size={21} strokeWidth={1.5} /></div>
+        <h4>{decision.title}</h4>
+        <div className="case-decision-text"><p><b>遇到的问题</b>{decision.problem}</p><p><b>我的处理</b>{decision.response}</p></div>
+      </article>)}</div>
+    </section>
+
+    <aside className="case-boundary crystal-card" aria-label="项目验证范围">
+      <div><span className="eyebrow">DESIGNED FOR TEACHERS</span><h3>资料、记录与判断，<br/>留在同一个工作台。</h3></div>
+      <p>材料池保存和整理教学原件，选定材料可继续用于备课或助手问答；课堂与批改记录进入班级诊断和学生画像。教案可保留不同教学版本并导出 Word／PDF，个人规则和记忆也可查看、修改与删除。</p>
+      <ArrowUpRight size={23} aria-hidden="true" />
+    </aside>
+  </section>;
 }

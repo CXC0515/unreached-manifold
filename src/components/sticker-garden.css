@@ -1,0 +1,28 @@
+.original-garden {
+  margin: 0 0 50px;
+  min-width: 0;
+}
+
+.original-garden iframe {
+  display: block;
+  width: 100%;
+  border: 0;
+  background: transparent;
+}
+
+.original-garden.is-revealing iframe {
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh !important;
+}
+
+main:has(.original-garden.is-revealing) > div {
+  filter: none !important;
+  transform: none !important;
+}
+
+@media (max-width: 720px) {
+  .original-garden { margin-bottom: 32px; }
+}

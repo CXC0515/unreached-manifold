@@ -11,3 +11,4 @@
 .crystal-card:before{content:"";position:absolute;inset:-45%;pointer-events:none;background:linear-gradient(112deg,transparent 42%,rgba(194,235,222,.14) 47%,rgba(255,255,255,.45) 50%,rgba(200,182,226,.16) 53%,transparent 58%);transform:translateX(-30%) rotate(-7deg);animation:prism-sweep 15s ease-in-out infinite;mix-blend-mode:screen}
 @keyframes prism-sweep{0%,32%{transform:translateX(-34%) rotate(-7deg);opacity:.1}52%{opacity:.7}74%,100%{transform:translateX(34%) rotate(-7deg);opacity:.12}}
 @media(prefers-reduced-motion:reduce){.crystal-card:before{animation:none;opacity:.18}}
+.site-footer a{color:inherit;font-size:10px;letter-spacing:.01em;text-decoration:none;border-bottom:1px solid currentColor}.site-footer a:hover{color:#365e51}
