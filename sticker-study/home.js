@@ -260,6 +260,7 @@ function renderShotScene() {
 }
 function openReveal(mode) {
   if (mode === 'shot' && !isComplete()) return;
+  $('#reveal-qingsong').hidden = mode !== 'shot';
   $('#reveal-eyebrow').textContent = mode === 'shot' ? 'A PHOTO FROM THE GARDEN' : 'WORKS / DIRECT ACCESS';
   $('#reveal-title').textContent = mode === 'shot' ? '花园完成，来看看我做的项目。' : '直接看我的个人项目';
   $('#reveal-intro').textContent = mode === 'shot'

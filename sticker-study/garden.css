@@ -92,12 +92,17 @@ h1, h2, h3 { font-family: Georgia, "Songti SC", "STSong", serif; }
 .reveal-copy h2 { margin: 11px 0 10px; font-size: clamp(25px, 2.6vw, 36px); line-height: 1.25; }
 .reveal-copy > p:not(.eyebrow) { color: #6d746a; font-size: 12px; line-height: 1.8; }
 .work-card { margin-top: 22px; padding: 17px; border: 1px solid #d8dfd0; border-radius: 12px; background: #f1f5ec; }
-.work-card > span, .other-works > span { color: #667c61; font-size: 9px; font-weight: 850; letter-spacing: .12em; }
-.work-card h3 { margin: 6px 0 7px; font-size: 22px; }
+.work-card-head { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.work-card-head > div > span, .other-works > span { color: #667c61; font-size: 9px; font-weight: 850; letter-spacing: .12em; }
+.work-card h3 { margin: 6px 0 0; font-size: 22px; }
 .work-card p { margin-bottom: 11px; color: #647062; font-size: 11px; line-height: 1.7; }
 .work-card small { display: inline-block; margin-right: 5px; padding: 4px 7px; border-radius: 99px; color: #4e6c4b; background: #dfe9d9; font-size: 9px; }
 .other-works { margin-top: 19px; }
 .other-works p { margin: 7px 0; font-size: 11px; color: #626e61; }
+.reveal-qingsong { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 44px; padding: 0 18px; border: 1px solid #3d5c46; border-radius: 999px; background: #3d5c46; color: #fffdf5; font-size: 12px; font-weight: 800; text-decoration: none; transition: background .18s ease, transform .18s ease; }
+.reveal-qingsong:hover { background: #2f4937; transform: translateY(-1px); }
+.reveal-qingsong:focus-visible,.reveal-link:focus-visible { outline: 3px solid #8fbdad; outline-offset: 3px; }
+.reveal-qingsong[hidden] { display: none; }
 @keyframes camera-pulse { 50% { box-shadow: 0 0 0 7px #fff9df99, 0 0 26px 10px #fff2b7ab; } }
 @media (max-width: 1100px) { .garden-workspace { grid-template-columns: minmax(0, 1fr) 245px; } .sticker-box { padding: 15px 12px; } }
 @media (max-width: 800px) { .page { padding: 0 14px; } .intro { align-items: flex-start; padding: 24px 0 20px; } .intro h1 { font-size: 35px; } .progress-card { flex-basis: 160px; } .garden-workspace { display: flex; flex-direction: column; } .scene-shell, .sticker-box { width: 100%; } .scene { min-width: calc(840px * var(--zoom, 1)); } .sticker-list { grid-template-columns: repeat(4, minmax(0, 1fr)); max-height: 285px; } }
